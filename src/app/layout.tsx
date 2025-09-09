@@ -4,7 +4,7 @@ import { ThemeProvider } from '@/components/theme-provider';
 import { Toaster } from '@/components/ui/toaster';
 
 export const metadata: Metadata = {
-  title: 'Opinion News Hub',
+  title: 'Opinion News',
   description: 'Your daily source of trending news and diverse opinions.',
 };
 

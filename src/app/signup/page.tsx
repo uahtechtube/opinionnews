@@ -12,7 +12,7 @@ export default function SignupPage() {
             Create an Account
           </h1>
           <p className="text-muted-foreground mt-2 text-center">
-            Join Opinion News Hub to share your thoughts
+            Join Opinion News to share your thoughts
           </p>
         </div>
         <SignupForm />

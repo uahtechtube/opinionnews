@@ -7,16 +7,16 @@ export default function Footer() {
       <div className="container mx-auto flex flex-col items-center justify-between gap-4 px-4 py-8 md:flex-row md:px-6 max-w-7xl">
         <div className="flex items-center gap-2">
           <Newspaper className="h-6 w-6 text-primary" />
-          <p className="text-lg font-semibold font-headline">Opinion News Hub</p>
+          <p className="text-lg font-semibold font-headline">Opinion News</p>
         </div>
         <p className="text-sm text-muted-foreground order-last md:order-none">
-          &copy; {new Date().getFullYear()} Opinion News Hub. All rights reserved.
+          &copy; {new Date().getFullYear()} Opinion News. All rights reserved.
         </p>
         <nav className="flex flex-wrap justify-center gap-x-6 gap-y-2 sm:gap-6">
-          <Link href="#" className="text-sm hover:underline underline-offset-4">
+          <Link href="/about" className="text-sm hover:underline underline-offset-4">
             About
           </Link>
-          <Link href="#" className="text-sm hover:underline underline-offset-4">
+          <Link href="/contact" className="text-sm hover:underline underline-offset-4">
             Contact
           </Link>
           <Link href="#" className="text-sm hover:underline underline-offset-4">

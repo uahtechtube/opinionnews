@@ -12,7 +12,7 @@ export default function LoginPage() {
             Welcome Back
           </h1>
           <p className="text-muted-foreground mt-2 text-center">
-            Sign in to continue to Opinion News Hub
+            Sign in to continue to Opinion News
           </p>
         </div>
         <LoginForm />

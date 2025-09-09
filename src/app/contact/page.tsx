@@ -32,10 +32,10 @@ export default function ContactPage() {
                 <div>
                   <h3 className="text-xl font-semibold">Email</h3>
                   <p className="text-muted-foreground">
-                    General Inquiries: contact@opinionhub.com
+                    General Inquiries: contact@opinionnews.com
                   </p>
                   <p className="text-muted-foreground">
-                    Support: support@opinionhub.com
+                    Support: support@opinionnews.com
                   </p>
                 </div>
               </div>

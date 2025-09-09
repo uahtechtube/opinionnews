@@ -14,7 +14,7 @@ export default function AboutPage() {
             <div className="grid items-center gap-6 lg:grid-cols-2 lg:gap-12">
               <div className="space-y-4">
                 <h1 className="text-4xl font-bold tracking-tighter text-primary sm:text-5xl md:text-6xl font-headline">
-                  About Opinion News Hub
+                  About Opinion News
                 </h1>
                 <p className="max-w-[600px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
                   We are dedicated to bringing you the most relevant news stories alongside a diverse range of opinions, fostering a well-informed and engaged community.
