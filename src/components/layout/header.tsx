@@ -89,14 +89,6 @@ export default function Header() {
             <Input placeholder="Search articles..." className="pl-9" />
           </div>
           <ThemeToggle />
-          <div className="hidden sm:flex items-center gap-2">
-            <Button variant="ghost" asChild>
-                <Link href="/login">Log In</Link>
-            </Button>
-            <Button asChild className="bg-accent hover:bg-accent/90 text-accent-foreground">
-                <Link href="/signup">Sign Up</Link>
-            </Button>
-          </div>
           <Sheet>
             <SheetTrigger asChild>
               <Button variant="ghost" size="icon" className="md:hidden">
@@ -111,10 +103,6 @@ export default function Header() {
               </Link>
               <div className="flex flex-col gap-6">
                 {categories.map((category) => renderCategoryLink(category, true))}
-              </div>
-              <div className="mt-8 flex flex-col gap-4">
-                 <Button variant="outline" asChild><Link href="/login">Log In</Link></Button>
-                 <Button asChild className="bg-accent hover:bg-accent/90 text-accent-foreground"><Link href="/signup">Sign Up</Link></Button>
               </div>
             </SheetContent>
           </Sheet>
