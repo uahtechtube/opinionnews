@@ -19,6 +19,7 @@ import {
   Clapperboard,
   Users,
   Info,
+  Mails,
 } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 
@@ -48,6 +49,7 @@ const iconMap: Record<string, React.ElementType> = {
   business: Briefcase,
   health: HeartPulse,
   lifestyle: Coffee,
+  contact: Mails,
 };
 
 export default function Header() {
@@ -74,21 +76,15 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container mx-auto flex h-16 max-w-7xl items-center px-4 md:px-6">
+      <div className="container mx-auto flex h-auto max-w-7xl flex-wrap items-center justify-between px-4 py-3 md:px-6">
         <Link href="/" className="mr-6 flex items-center gap-2">
           <Newspaper className="h-6 w-6 text-primary" />
           <span className="hidden font-bold sm:inline-block font-headline">
             Opinion News Hub
           </span>
         </Link>
-        <div className="hidden md:flex items-center gap-4 text-sm overflow-x-auto pb-2 -mb-2">
-            <ScrollArea className="w-full whitespace-nowrap">
-              <nav className="flex items-center gap-6 text-sm">
-                  {categories.map((category) => renderCategoryLink(category))}
-              </nav>
-            </ScrollArea>
-        </div>
-        <div className="ml-auto flex items-center gap-2">
+        
+        <div className="flex items-center gap-2 order-2 md:order-3">
           <div className="relative hidden lg:block">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
             <Input placeholder="Search articles..." className="pl-9" />
@@ -114,6 +110,10 @@ export default function Header() {
             </SheetContent>
           </Sheet>
         </div>
+
+        <nav className="hidden md:flex items-center gap-x-6 gap-y-2 text-sm w-full md:w-auto order-3 md:order-2 mt-2 md:mt-0 justify-center flex-wrap">
+            {categories.map((category) => renderCategoryLink(category))}
+        </nav>
       </div>
     </header>
   );

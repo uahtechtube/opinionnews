@@ -9,7 +9,6 @@ export const categories: Category[] = [
   { name: 'Podcasts', slug: 'podcasts' },
   { name: 'Video', slug: 'video' },
   { name: 'Interviews', slug: 'interviews' },
-  { name: 'About', slug: 'about' },
   { name: 'Politics', slug: 'politics' },
   { name: 'Sports', slug: 'sports' },
   { name: 'Entertainment', slug: 'entertainment' },
@@ -17,6 +16,8 @@ export const categories: Category[] = [
   { name: 'Business', slug: 'business' },
   { name: 'Health', slug: 'health' },
   { name: 'Lifestyle', slug: 'lifestyle' },
+  { name: 'About', slug: 'about' },
+  { name: 'Contact Us', slug: 'contact' },
 ];
 
 const generateComments = (count: number): Comment[] => {
