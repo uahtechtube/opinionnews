@@ -32,7 +32,7 @@ export default function Home() {
       <main className="flex-1">
         {/* Hero Section */}
         <section className="relative w-full bg-card pt-12 md:pt-24 lg:pt-32">
-          <div className="container mx-auto px-4 md:px-6">
+          <div className="container mx-auto px-4 md:px-6 max-w-7xl">
             <div className="grid gap-6 lg:grid-cols-2 lg:gap-12">
               <div className="flex flex-col justify-center space-y-4">
                 <div className="space-y-2">
@@ -44,7 +44,7 @@ export default function Home() {
                     {featuredArticle.excerpt}
                   </p>
                 </div>
-                <div className="flex flex-col gap-2 min-[400px]:flex-row">
+                <div className="flex flex-col gap-2 sm:flex-row">
                   <Button asChild size="lg">
                     <Link href={`/article/${featuredArticle.slug}`}>
                       Read Article <ArrowRight className="ml-2 h-4 w-4" />
@@ -71,7 +71,7 @@ export default function Home() {
 
         {/* Trending Section */}
         <section className="w-full py-12 md:py-24 lg:py-32">
-          <div className="container mx-auto px-4 md:px-6">
+          <div className="container mx-auto px-4 md:px-6 max-w-7xl">
             <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl font-headline mb-8">
               Trending Highlights
             </h2>
@@ -84,26 +84,26 @@ export default function Home() {
             >
               <CarouselContent>
                 {trendingArticles.map((article) => (
-                  <CarouselItem key={article.id} className="md:basis-1/2 lg:basis-1/3">
+                  <CarouselItem key={article.id} className="basis-full sm:basis-1/2 lg:basis-1/3">
                     <div className="p-1">
                        <ArticleCard article={article} />
                     </div>
                   </CarouselItem>
                 ))}
               </CarouselContent>
-              <CarouselPrevious className="absolute left-0 top-1/2 -translate-y-1/2 transform text-foreground" />
-              <CarouselNext className="absolute right-0 top-1/2 -translate-y-1/2 transform text-foreground" />
+              <CarouselPrevious className="absolute left-2 top-1/2 -translate-y-1/2 transform text-foreground sm:left-[-1rem]"/>
+              <CarouselNext className="absolute right-2 top-1/2 -translate-y-1/2 transform text-foreground sm:right-[-1rem]"/>
             </Carousel>
           </div>
         </section>
 
         {/* Latest News Section */}
         <section className="w-full py-12 md:py-24 lg:py-32 bg-muted/40 dark:bg-card">
-          <div className="container mx-auto px-4 md:px-6">
+          <div className="container mx-auto px-4 md:px-6 max-w-7xl">
             <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl font-headline mb-8">
               Latest News
             </h2>
-            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {latestArticles.map((article) => (
                 <ArticleCard key={article.id} article={article} />
               ))}

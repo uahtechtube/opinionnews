@@ -29,6 +29,7 @@ import { ThemeToggle } from '../theme-toggle';
 import { categories } from '@/lib/data';
 import { cn } from '@/lib/utils';
 import type { Category } from '@/lib/types';
+import { ScrollArea } from '../ui/scroll-area';
 
 const iconMap: Record<string, React.ElementType> = {
   news: Newspaper,
@@ -60,12 +61,12 @@ export default function Header() {
         key={category.slug}
         href={`/category/${category.slug}`}
         className={cn(
-          "flex items-center gap-2 transition-colors hover:text-foreground",
+          "flex items-center gap-3 transition-colors hover:text-foreground shrink-0",
           isActive ? "text-foreground font-semibold" : "text-muted-foreground",
           isMobile && "text-lg"
         )}
       >
-        {Icon && <Icon className="h-4 w-4" />}
+        {Icon && <Icon className="h-5 w-5" />}
         <span>{category.name}</span>
       </Link>
     );
@@ -73,16 +74,20 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container mx-auto flex h-16 items-center px-4 md:px-6">
+      <div className="container mx-auto flex h-16 max-w-7xl items-center px-4 md:px-6">
         <Link href="/" className="mr-6 flex items-center gap-2">
           <Newspaper className="h-6 w-6 text-primary" />
           <span className="hidden font-bold sm:inline-block font-headline">
             Opinion News Hub
           </span>
         </Link>
-        <nav className="hidden items-center gap-6 text-sm md:flex flex-wrap">
-          {categories.map((category) => renderCategoryLink(category))}
-        </nav>
+        <div className="hidden md:flex items-center gap-4 text-sm overflow-x-auto pb-2 -mb-2">
+            <ScrollArea className="w-full whitespace-nowrap">
+              <nav className="flex items-center gap-6 text-sm">
+                  {categories.map((category) => renderCategoryLink(category))}
+              </nav>
+            </ScrollArea>
+        </div>
         <div className="ml-auto flex items-center gap-2">
           <div className="relative hidden lg:block">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
@@ -96,14 +101,16 @@ export default function Header() {
                 <span className="sr-only">Toggle Menu</span>
               </Button>
             </SheetTrigger>
-            <SheetContent side="right">
+            <SheetContent side="right" className="w-[300px] sm:w-[340px]">
               <Link href="/" className="mr-6 flex items-center gap-2 mb-8">
                 <Newspaper className="h-6 w-6 text-primary" />
                 <span className="font-bold font-headline">Opinion News Hub</span>
               </Link>
-              <div className="flex flex-col gap-6">
-                {categories.map((category) => renderCategoryLink(category, true))}
-              </div>
+               <ScrollArea className="h-[calc(100%-4rem)]">
+                <div className="flex flex-col gap-6 pr-6">
+                  {categories.map((category) => renderCategoryLink(category, true))}
+                </div>
+              </ScrollArea>
             </SheetContent>
           </Sheet>
         </div>

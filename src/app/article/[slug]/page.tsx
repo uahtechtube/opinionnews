@@ -35,14 +35,14 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
     <div className="flex min-h-screen flex-col">
       <Header />
       <main className="flex-1 py-6 md:py-12">
-        <div className="container mx-auto px-4 md:px-6">
+        <div className="container mx-auto max-w-4xl px-4 md:px-6">
           <article className="prose prose-stone dark:prose-invert mx-auto max-w-4xl">
             <div className="space-y-4 not-prose">
               <Badge variant="outline" className="text-accent-foreground bg-accent border-accent">{article.category}</Badge>
               <h1 className="text-4xl font-extrabold tracking-tight lg:text-5xl font-headline">
                 {article.title}
               </h1>
-              <div className="flex items-center space-x-4 text-sm text-muted-foreground">
+              <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-muted-foreground">
                 <div className="flex items-center gap-2">
                   <User className="h-4 w-4" />
                   <span>{article.author}</span>
@@ -63,7 +63,7 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
               alt={article.title}
               width={1250}
               height={700}
-              className="my-8 rounded-lg"
+              className="my-8 rounded-lg aspect-video object-cover"
               data-ai-hint="news article"
             />
 
@@ -97,9 +97,9 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
                     <AvatarFallback>{comment.author.charAt(0)}</AvatarFallback>
                   </Avatar>
                   <div className="flex-1">
-                    <div className="flex items-center justify-between">
+                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
                       <p className="font-semibold">{comment.author}</p>
-                      <p className="text-xs text-muted-foreground">{new Date(comment.date).toLocaleString()}</p>
+                      <p className="text-xs text-muted-foreground mt-1 sm:mt-0">{new Date(comment.date).toLocaleString()}</p>
                     </div>
                     <p className="mt-1 text-foreground/90">{comment.content}</p>
                   </div>
