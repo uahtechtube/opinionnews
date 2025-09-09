@@ -101,15 +101,17 @@ export default function Header() {
               <SheetHeader>
                 <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
               </SheetHeader>
-              <Link href="/" className="mr-6 flex items-center gap-2 mb-8">
-                <Newspaper className="h-6 w-6 text-primary" />
-                <span className="font-bold font-headline">Opinion News Hub</span>
-              </Link>
-               <ScrollArea className="h-[calc(100%-4rem)]">
-                <div className="flex flex-col gap-6 pr-6">
-                  {categories.map((category) => renderCategoryLink(category, true))}
+              <div className="p-4 flex flex-col h-full">
+                <div className="relative mb-6">
+                    <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                    <Input placeholder="Search articles..." className="pl-9" />
                 </div>
-              </ScrollArea>
+                <ScrollArea className="flex-1">
+                  <nav className="flex flex-col gap-6 pr-4">
+                    {categories.map((category) => renderCategoryLink(category, true))}
+                  </nav>
+                </ScrollArea>
+              </div>
             </SheetContent>
           </Sheet>
         </div>
