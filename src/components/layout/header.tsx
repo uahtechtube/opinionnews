@@ -25,7 +25,7 @@ import { usePathname } from 'next/navigation';
 
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
 import { ThemeToggle } from '../theme-toggle';
 import { categories } from '@/lib/data';
 import { cn } from '@/lib/utils';
@@ -98,6 +98,9 @@ export default function Header() {
               </Button>
             </SheetTrigger>
             <SheetContent side="right" className="w-[300px] sm:w-[340px]">
+              <SheetHeader>
+                <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
+              </SheetHeader>
               <Link href="/" className="mr-6 flex items-center gap-2 mb-8">
                 <Newspaper className="h-6 w-6 text-primary" />
                 <span className="font-bold font-headline">Opinion News Hub</span>
