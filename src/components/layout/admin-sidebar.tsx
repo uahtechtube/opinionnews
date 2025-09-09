@@ -44,9 +44,9 @@ export default function AdminSidebar() {
         <SidebarMenu>
           {links.map((link) => (
             <SidebarMenuItem key={link.href}>
-              <Link href={link.href} passHref>
+              <Link href={link.href} legacyBehavior passHref>
                 <SidebarMenuButton
-                  asChild
+                  as="a"
                   isActive={
                     link.href === '/admin'
                       ? pathname === link.href
@@ -56,10 +56,8 @@ export default function AdminSidebar() {
                     children: link.label,
                   }}
                 >
-                  <a>
-                    <link.icon className="h-5 w-5" />
-                    <span>{link.label}</span>
-                  </a>
+                  <link.icon className="h-5 w-5" />
+                  <span>{link.label}</span>
                 </SidebarMenuButton>
               </Link>
             </SidebarMenuItem>
