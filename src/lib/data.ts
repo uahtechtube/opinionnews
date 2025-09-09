@@ -1,0 +1,148 @@
+import type { Category, Article, Comment } from './types';
+
+export const categories: Category[] = [
+  { name: 'Politics', slug: 'politics' },
+  { name: 'Sports', slug: 'sports' },
+  { name: 'Entertainment', slug: 'entertainment' },
+  { name: 'Technology', slug: 'technology' },
+  { name: 'Business', slug: 'business' },
+  { name: 'Health', slug: 'health' },
+  { name: 'Lifestyle', slug: 'lifestyle' },
+];
+
+const generateComments = (count: number): Comment[] => {
+    const comments: Comment[] = [];
+    const authors = ['Alice', 'Bob', 'Charlie', 'Diana', 'Eve'];
+    const contents = [
+        "I completely agree with this perspective. It's well-reasoned.",
+        "I have to disagree. The author is missing a key point about the long-term effects.",
+        "This is an interesting take, but I'm not fully convinced. What about the economic impact?",
+        "Finally, someone is talking about this! It's a crucial issue.",
+        "I think this is an oversimplification of a very complex problem.",
+        "Great article! Very insightful and provides a lot of food for thought.",
+        "While I see the author's point, I believe there are alternative solutions that are not being considered.",
+        "This is biased reporting. The other side of the story is completely ignored.",
+    ];
+    for (let i = 1; i <= count; i++) {
+        comments.push({
+            id: i.toString(),
+            author: authors[i % authors.length],
+            date: new Date(Date.now() - i * 1000 * 60 * 60 * (i % 5 + 1)).toISOString(),
+            content: contents[i % contents.length],
+        });
+    }
+    return comments;
+}
+
+export const articles: Article[] = [
+  {
+    id: '1',
+    slug: 'global-tech-summit-innovations',
+    title: 'Global Tech Summit Unveils Groundbreaking Innovations for 2024',
+    excerpt: 'The annual Global Tech Summit concluded today, leaving the world buzzing with futuristic gadgets and revolutionary software solutions aimed at tackling climate change.',
+    imageUrl: 'https://picsum.photos/600/400?random=1',
+    category: 'Technology',
+    author: 'Jane Doe',
+    date: '2024-05-15',
+    comments: generateComments(5),
+  },
+  {
+    id: '2',
+    slug: 'championship-finals-thrilling-conclusion',
+    title: 'Championship Finals End in a Thrilling Last-Minute Victory',
+    excerpt: 'In an edge-of-your-seat final, the underdog team clinched the title with a stunning goal in the final seconds of the game, capping off an unforgettable season.',
+    imageUrl: 'https://picsum.photos/600/400?random=2',
+    category: 'Sports',
+    author: 'John Smith',
+    date: '2024-05-14',
+    comments: generateComments(3),
+  },
+  {
+    id: '3',
+    slug: 'new-environmental-policy-debate',
+    title: 'New Environmental Policy Sparks Heated Debate Among World Leaders',
+    excerpt: 'A new international treaty aimed at reducing carbon emissions has been met with both praise and criticism, highlighting the complex global politics of climate action.',
+    imageUrl: 'https://picsum.photos/600/400?random=3',
+    category: 'Politics',
+    author: 'Alex Johnson',
+    date: '2024-05-13',
+    comments: generateComments(8),
+  },
+  {
+    id: '4',
+    slug: 'hollywood-blockbuster-breaks-records',
+    title: 'Summer Blockbuster "Galaxy Quest 3" Shatters Box Office Records',
+    excerpt: 'The latest installment in the beloved sci-fi franchise has soared to the top of the charts, grossing over $500 million worldwide in its opening weekend.',
+    imageUrl: 'https://picsum.photos/600/400?random=4',
+    category: 'Entertainment',
+    author: 'Emily White',
+    date: '2024-05-12',
+    comments: generateComments(2),
+  },
+  {
+    id: '5',
+    slug: 'market-trends-volatile-week',
+    title: 'Market Trends Show a Volatile Week for Tech Stocks',
+    excerpt: 'Investors are on high alert as major tech stocks experienced significant fluctuations this week, driven by speculation about upcoming interest rate hikes.',
+    imageUrl: 'https://picsum.photos/600/400?random=5',
+    category: 'Business',
+    author: 'Michael Brown',
+    date: '2024-05-11',
+    comments: generateComments(6),
+  },
+  {
+    id: '6',
+    slug: 'breakthrough-in-alzheimers-research',
+    title: 'Scientists Announce Major Breakthrough in Alzheimer\'s Research',
+    excerpt: 'A new study published in a leading medical journal offers promising results for a novel treatment that could slow the progression of Alzheimer\'s disease.',
+    imageUrl: 'https://picsum.photos/600/400?random=6',
+    category: 'Health',
+    author: 'Dr. Sarah Green',
+    date: '2024-05-10',
+    comments: generateComments(4),
+  },
+  {
+    id: '7',
+    slug: 'minimalist-living-gaining-popularity',
+    title: 'The Rise of Minimalist Living: Why Less is More for a Happier Life',
+    excerpt: 'A growing movement towards minimalism is encouraging people to declutter their lives, focus on experiences over possessions, and find joy in simplicity.',
+    imageUrl: 'https://picsum.photos/600/400?random=7',
+    category: 'Lifestyle',
+    author: 'Chris Lee',
+    date: '2024-05-09',
+    comments: generateComments(7),
+  },
+  {
+    id: '8',
+    slug: 'ai-transforming-creative-industries',
+    title: 'How Artificial Intelligence is Transforming the Creative Industries',
+    excerpt: 'From music composition to graphic design, AI tools are revolutionizing creative workflows, but also raising questions about the future of art and artists.',
+    imageUrl: 'https://picsum.photos/600/400?random=8',
+    category: 'Technology',
+    author: 'Jane Doe',
+    date: '2024-05-08',
+    comments: generateComments(5),
+  },
+   {
+    id: '9',
+    slug: 'local-elections-surprising-results',
+    title: 'Local Elections Deliver Surprising Results Across the Nation',
+    excerpt: 'Voter turnout was higher than expected in the recent local elections, leading to several unexpected wins and a potential shift in the political landscape.',
+    imageUrl: 'https://picsum.photos/600/400?random=9',
+    category: 'Politics',
+    author: 'Alex Johnson',
+    date: '2024-05-07',
+    comments: generateComments(9),
+  },
+   {
+    id: '10',
+    slug: 'future-of-remote-work',
+    title: 'The Future of Work: Are Companies Abandoning the Remote Model?',
+    excerpt: 'Three years after the massive shift to remote work, many companies are now calling employees back to the office, sparking a debate about productivity and work-life balance.',
+    imageUrl: 'https://picsum.photos/600/400?random=10',
+    category: 'Business',
+    author: 'Michael Brown',
+    date: '2024-05-06',
+    comments: generateComments(12),
+  },
+];
