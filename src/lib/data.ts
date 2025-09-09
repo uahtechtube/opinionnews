@@ -1,6 +1,15 @@
 import type { Category, Article, Comment } from './types';
 
 export const categories: Category[] = [
+  { name: 'News', slug: 'news' },
+  { name: 'Opinion', slug: 'opinion' },
+  { name: 'AI News', slug: 'ai-news' },
+  { name: 'Poetry', slug: 'poetry' },
+  { name: 'Features', slug: 'features' },
+  { name: 'Podcasts', slug: 'podcasts' },
+  { name: 'Video', slug: 'video' },
+  { name: 'Interviews', slug: 'interviews' },
+  { name: 'About', slug: 'about' },
   { name: 'Politics', slug: 'politics' },
   { name: 'Sports', slug: 'sports' },
   { name: 'Entertainment', slug: 'entertainment' },

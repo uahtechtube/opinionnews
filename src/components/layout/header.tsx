@@ -12,6 +12,13 @@ import {
   Briefcase,
   HeartPulse,
   Coffee,
+  Lightbulb,
+  Feather,
+  Award,
+  Mic,
+  Clapperboard,
+  Users,
+  Info,
 } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 
@@ -24,6 +31,15 @@ import { cn } from '@/lib/utils';
 import type { Category } from '@/lib/types';
 
 const iconMap: Record<string, React.ElementType> = {
+  news: Newspaper,
+  opinion: Lightbulb,
+  'ai-news': Cpu,
+  poetry: Feather,
+  features: Award,
+  podcasts: Mic,
+  video: Clapperboard,
+  interviews: Users,
+  about: Info,
   politics: Scale,
   sports: Trophy,
   entertainment: Film,
@@ -64,7 +80,7 @@ export default function Header() {
             Opinion News Hub
           </span>
         </Link>
-        <nav className="hidden items-center gap-6 text-sm md:flex">
+        <nav className="hidden items-center gap-6 text-sm md:flex flex-wrap">
           {categories.map((category) => renderCategoryLink(category))}
         </nav>
         <div className="ml-auto flex items-center gap-2">
