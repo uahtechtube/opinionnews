@@ -12,6 +12,7 @@ import {
   SidebarMenuButton,
   SidebarGroup,
   SidebarGroupLabel,
+  SidebarTrigger,
 } from '@/components/ui/sidebar';
 import {
   LayoutDashboard,
@@ -28,6 +29,7 @@ import {
   LogOut,
 } from 'lucide-react';
 import { Logo } from '../icons/logo';
+import { SheetHeader, SheetTitle } from '../ui/sheet';
 
 const mainLinks = [
   { href: '/admin', label: 'Dashboard', icon: LayoutDashboard },
@@ -77,19 +79,65 @@ export default function AdminSidebar() {
   );
 
   return (
-    <Sidebar collapsible="icon" className="hidden sm:flex">
-      <SidebarContent>
-        <div className="flex flex-col h-full">
-            <SidebarHeader>
-                <div className="flex items-center gap-2">
-                <Logo className="h-8 w-8 text-primary" />
-                <div className="flex flex-col">
-                    <span className="text-lg font-semibold leading-tight">Opinion News</span>
-                    <span className="text-sm text-muted-foreground leading-tight">Admin Panel</span>
-                </div>
-                </div>
-            </SidebarHeader>
-            <div className="flex-1 p-2">
+    <>
+      <Sidebar collapsible="icon" className="hidden sm:flex">
+        <SidebarContent>
+          <div className="flex flex-col h-full">
+              <SidebarHeader>
+                  <div className="flex items-center gap-2">
+                  <Logo className="h-8 w-8 text-primary" />
+                  <div className="flex flex-col">
+                      <span className="text-lg font-semibold leading-tight">Opinion News</span>
+                      <span className="text-sm text-muted-foreground leading-tight">Admin Panel</span>
+                  </div>
+                  </div>
+              </SidebarHeader>
+              <div className="flex-1 p-2">
+                  <SidebarGroup>
+                      <SidebarGroupLabel>Main</SidebarGroupLabel>
+                      <SidebarMenu>{mainLinks.map(renderLink)}</SidebarMenu>
+                  </SidebarGroup>
+                  <SidebarGroup>
+                      <SidebarGroupLabel>Content</SidebarGroupLabel>
+                      <SidebarMenu>{contentLinks.map(renderLink)}</SidebarMenu>
+                  </SidebarGroup>
+                  <SidebarGroup>
+                      <SidebarGroupLabel>Users</SidebarGroupLabel>
+                      <SidebarMenu>{usersLinks.map(renderLink)}</SidebarMenu>
+                  </SidebarGroup>
+              </div>
+              <div className="p-2">
+                  <SidebarGroup>
+                      <SidebarMenu>
+                          {settingsLinks.map(renderLink)}
+                          <SidebarMenuItem>
+                              <SidebarMenuButton>
+                                  <LogOut className="h-5 w-5" />
+                                  <span>Logout</span>
+                              </SidebarMenuButton>
+                          </SidebarMenuItem>
+                      </SidebarMenu>
+                  </SidebarGroup>
+              </div>
+          </div>
+        </SidebarContent>
+      </Sidebar>
+      <Sidebar collapsible="offcanvas" className="sm:hidden">
+        <SidebarContent>
+            <SheetHeader className="border-b p-4">
+                <SheetTitle>Admin Menu</SheetTitle>
+            </SheetHeader>
+            <div className="flex h-full flex-col">
+                 <SidebarHeader>
+                    <div className="flex items-center gap-2">
+                        <Logo className="h-8 w-8 text-primary" />
+                        <div className="flex flex-col">
+                        <span className="text-lg font-semibold leading-tight">Opinion News</span>
+                        <span className="text-sm text-muted-foreground leading-tight">Admin</span>
+                        </div>
+                    </div>
+                </SidebarHeader>
+                <div className="flex-1 p-2">
                 <SidebarGroup>
                     <SidebarGroupLabel>Main</SidebarGroupLabel>
                     <SidebarMenu>{mainLinks.map(renderLink)}</SidebarMenu>
@@ -102,22 +150,23 @@ export default function AdminSidebar() {
                     <SidebarGroupLabel>Users</SidebarGroupLabel>
                     <SidebarMenu>{usersLinks.map(renderLink)}</SidebarMenu>
                 </SidebarGroup>
-            </div>
-            <div className="p-2">
+                </div>
+                <div className="p-2">
                 <SidebarGroup>
                     <SidebarMenu>
-                        {settingsLinks.map(renderLink)}
-                        <SidebarMenuItem>
-                            <SidebarMenuButton>
-                                <LogOut className="h-5 w-5" />
-                                <span>Logout</span>
-                            </SidebarMenuButton>
-                        </SidebarMenuItem>
+                    {settingsLinks.map(renderLink)}
+                    <SidebarMenuItem>
+                        <SidebarMenuButton>
+                        <LogOut className="h-4 w-4" />
+                        Logout
+                        </SidebarMenuButton>
+                    </SidebarMenuItem>
                     </SidebarMenu>
                 </SidebarGroup>
+                </div>
             </div>
-        </div>
-      </SidebarContent>
-    </Sidebar>
+        </SidebarContent>
+      </Sidebar>
+    </>
   );
 }
