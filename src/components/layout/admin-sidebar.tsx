@@ -1,4 +1,3 @@
-
 "use client";
 
 import Link from 'next/link';
@@ -89,7 +88,7 @@ export default function AdminSidebar() {
             <span className="text-sm text-muted-foreground leading-tight">Admin Panel</span>
           </div>
           <div className="ml-auto flex items-center gap-2">
-            <SidebarTrigger className="md:hidden" />
+            <SidebarTrigger />
           </div>
         </div>
       </SidebarHeader>
