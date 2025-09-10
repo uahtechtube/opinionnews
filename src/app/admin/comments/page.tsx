@@ -35,6 +35,7 @@ export default function AdminCommentsPage() {
     const allComments = articles.flatMap(article => 
         article.comments.map(comment => ({
             ...comment,
+            id: `${article.id}-${comment.id}`, // Create a unique ID
             articleTitle: article.title,
             articleSlug: article.slug,
             status: Math.random() > 0.5 ? 'Approved' : 'Pending'
