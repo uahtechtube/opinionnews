@@ -3,9 +3,7 @@
 
 import Link from 'next/link';
 import {
-  Menu,
   Search,
-  Plus
 } from 'lucide-react';
 import { Button } from '../ui/button';
 import { Input } from '../ui/input';
@@ -23,7 +21,7 @@ import MobileSidebar from './mobile-sidebar';
 
 export default function AdminHeader() {
   return (
-    <header className="flex h-14 items-center gap-4 border-b bg-muted/40 px-4 lg:h-[60px] lg:px-6">
+    <header className="flex h-14 items-center gap-4 border-b bg-background px-4 lg:h-[60px] lg:px-6">
       <MobileSidebar />
 
       <div className="w-full flex-1">
@@ -32,17 +30,12 @@ export default function AdminHeader() {
             <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
             <Input
               type="search"
-              placeholder="Search products..."
+              placeholder="Search..."
               className="w-full appearance-none bg-background pl-8 shadow-none md:w-2/3 lg:w-1/3"
             />
           </div>
         </form>
       </div>
-      <Button asChild size="sm" className="ml-auto gap-1">
-        <Link href="/admin/articles/new">
-          <Plus className="h-4 w-4" /> New Article
-        </Link>
-      </Button>
       <ThemeToggle />
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
