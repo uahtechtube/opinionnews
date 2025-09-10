@@ -139,7 +139,7 @@ export default function AdminAnalyticsPage() {
                     </TableCell>
                     <TableCell className="text-right">
                         <Link href={`/article/${article.slug}`} className="flex items-center justify-end text-muted-foreground hover:text-primary">
-                            {(Math.floor(Math.random() * 5000) + 1000).toLocaleString()} <ArrowUpRight className="h-4 w-4 ml-1" />
+                            {(parseInt(article.id, 10) * 317 + 1000).toLocaleString()} <ArrowUpRight className="h-4 w-4 ml-1" />
                         </Link>
                     </TableCell>
                   </TableRow>
