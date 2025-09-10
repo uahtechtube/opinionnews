@@ -1,7 +1,6 @@
 
 "use client";
 
-import Link from 'next/link';
 import {
   SidebarTrigger,
 } from '@/components/ui/sidebar';
@@ -34,7 +33,6 @@ export default function AdminHeader() {
           className="w-full rounded-lg bg-background pl-8 md:w-[200px] lg:w-[320px]"
         />
       </div>
-      <ThemeToggle />
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button variant="outline" size="icon" className="overflow-hidden rounded-full">
