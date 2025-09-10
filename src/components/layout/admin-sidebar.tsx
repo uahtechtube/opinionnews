@@ -20,7 +20,7 @@ import {
 } from 'lucide-react';
 import { Logo } from '../icons/logo';
 import { cn } from '@/lib/utils';
-import { Sheet, SheetContent, SheetTrigger } from '../ui/sheet';
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '../ui/sheet';
 import { Button } from '../ui/button';
 import { Menu } from 'lucide-react';
 import { ScrollArea } from '../ui/scroll-area';
@@ -136,6 +136,9 @@ export function MobileAdminSidebar() {
                 </Button>
             </SheetTrigger>
             <SheetContent side="left" className="flex flex-col p-0">
+                <SheetHeader>
+                    <SheetTitle className="sr-only">Admin Menu</SheetTitle>
+                </SheetHeader>
                 <SidebarContent />
             </SheetContent>
         </Sheet>
