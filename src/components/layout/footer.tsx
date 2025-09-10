@@ -32,6 +32,9 @@ export default function Footer() {
           <Link href="/contact" className="text-sm hover:underline underline-offset-4">
             Contact
           </Link>
+          <Link href="/support" className="text-sm hover:underline underline-offset-4">
+            Support
+          </Link>
           <Link href="#" className="text-sm hover:underline underline-offset-4">
             Privacy Policy
           </Link>
