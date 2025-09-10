@@ -4,17 +4,6 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import {
-  Sidebar,
-  SidebarContent,
-  SidebarHeader,
-  SidebarMenu,
-  SidebarMenuItem,
-  SidebarMenuButton,
-  SidebarGroup,
-  SidebarGroupLabel,
-  useSidebar,
-} from '@/components/ui/sidebar';
-import {
   LayoutDashboard,
   Newspaper,
   Users,
@@ -30,7 +19,8 @@ import {
   Calendar,
 } from 'lucide-react';
 import { Logo } from '../icons/logo';
-import { Sheet, SheetContent, SheetHeader, SheetTitle } from '../ui/sheet';
+import { cn } from '@/lib/utils';
+
 
 const mainLinks = [
   { href: '/admin', label: 'Dashboard', icon: LayoutDashboard },
@@ -56,91 +46,75 @@ const settingsLinks = [
     { href: '/admin/calendar', label: 'Calendar', icon: Calendar },
 ]
 
-export default function AdminSidebar() {
-  const pathname = usePathname();
-  const { openMobile, setOpenMobile } = useSidebar();
-
-
-  const renderLink = (link: { href: string; label: string; icon: React.ElementType }) => (
-    <SidebarMenuItem key={link.href}>
-      <SidebarMenuButton
-        asChild
-        isActive={
+const SidebarLink = ({ link }: { link: { href: string; label: string; icon: React.ElementType } }) => {
+    const pathname = usePathname();
+    const isActive =
           link.href === '/admin'
             ? pathname === link.href
-            : pathname.startsWith(link.href)
-        }
-        tooltip={{
-          children: link.label,
-        }}
-      >
-        <Link href={link.href}>
-          <link.icon className="h-5 w-5" />
-          <span>{link.label}</span>
+            : pathname.startsWith(link.href);
+
+    return (
+        <Link
+            href={link.href}
+            className={cn(
+                "flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary",
+                isActive && "bg-muted text-primary"
+            )}
+        >
+            <link.icon className="h-4 w-4" />
+            {link.label}
         </Link>
-      </SidebarMenuButton>
-    </SidebarMenuItem>
-  );
+    );
+};
 
-  const sidebarContent = (
-      <div className="flex h-full flex-col">
-          <SidebarHeader>
-              <div className="flex items-center gap-2">
-              <Logo className="h-8 w-8 text-primary" />
-              <div className="flex flex-col">
-                  <span className="text-lg font-semibold leading-tight">Opinion News</span>
-                  <span className="text-sm text-muted-foreground leading-tight">Admin Panel</span>
-              </div>
-              </div>
-          </SidebarHeader>
-          <SidebarContent className="p-0">
-            <div className="p-2">
-                <SidebarGroup>
-                    <SidebarGroupLabel>Main</SidebarGroupLabel>
-                    <SidebarMenu>{mainLinks.map(renderLink)}</SidebarMenu>
-                </SidebarGroup>
-                <SidebarGroup>
-                    <SidebarGroupLabel>Content</SidebarGroupLabel>
-                    <SidebarMenu>{contentLinks.map(renderLink)}</SidebarMenu>
-                </SidebarGroup>
-                <SidebarGroup>
-                    <SidebarGroupLabel>Users</SidebarGroupLabel>
-                    <SidebarMenu>{usersLinks.map(renderLink)}</SidebarMenu>
-                </SidebarGroup>
-            </div>
-            <div className="mt-auto p-2">
-                <SidebarGroup>
-                    <SidebarMenu>
-                    {settingsLinks.map(renderLink)}
-                    <SidebarMenuItem>
-                        <SidebarMenuButton>
-                        <LogOut className="h-5 w-5" />
-                        <span>Logout</span>
-                        </SidebarMenuButton>
-                    </SidebarMenuItem>
-                    </SidebarMenu>
-                </SidebarGroup>
-            </div>
-          </SidebarContent>
-      </div>
-  )
+export const SidebarContent = () => (
+    <div className="flex h-full max-h-screen flex-col gap-2">
+        <div className="flex h-14 items-center border-b px-4 lg:h-[60px] lg:px-6">
+            <Link href="/" className="flex items-center gap-2 font-semibold">
+                <Logo className="h-6 w-6" />
+                <span className="">Opinion News</span>
+            </Link>
+        </div>
+        <div className="flex-1">
+            <nav className="grid items-start px-2 text-sm font-medium lg:px-4">
+                <h3 className="my-2 px-3 text-xs font-semibold text-muted-foreground uppercase">Main</h3>
+                {mainLinks.map((link) => (
+                    <SidebarLink key={link.href} link={link} />
+                ))}
+
+                <h3 className="my-2 px-3 text-xs font-semibold text-muted-foreground uppercase">Content</h3>
+                {contentLinks.map((link) => (
+                    <SidebarLink key={link.href} link={link} />
+                ))}
+
+                 <h3 className="my-2 px-3 text-xs font-semibold text-muted-foreground uppercase">Users</h3>
+                {usersLinks.map((link) => (
+                    <SidebarLink key={link.href} link={link} />
+                ))}
+            </nav>
+        </div>
+        <div className="mt-auto p-4">
+             <nav className="grid items-start px-2 text-sm font-medium lg:px-4">
+                {settingsLinks.map((link) => (
+                    <SidebarLink key={link.href} link={link} />
+                ))}
+                <Link
+                    href="#"
+                    className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary"
+                >
+                    <LogOut className="h-4 w-4" />
+                    Logout
+                </Link>
+             </nav>
+        </div>
+    </div>
+);
 
 
+export default function AdminSidebar() {
   return (
-    <>
-      <Sidebar collapsible="icon" className="hidden sm:flex">
-        <SidebarContent>
-          {sidebarContent}
-        </SidebarContent>
-      </Sidebar>
-      <Sheet open={openMobile} onOpenChange={setOpenMobile}>
-        <SheetContent side="left" className="sm:hidden w-[300px] p-0 flex flex-col">
-            <SheetHeader className="border-b p-4">
-                <SheetTitle>Admin Menu</SheetTitle>
-            </SheetHeader>
-            {sidebarContent}
-        </SheetContent>
-      </Sheet>
-    </>
+    <div className="hidden border-r bg-muted/40 md:block">
+        <SidebarContent />
+    </div>
   );
 }
