@@ -33,13 +33,17 @@ import {
 
 export default function AdminCommentsPage() {
     const allComments = articles.flatMap(article => 
-        article.comments.map(comment => ({
-            ...comment,
-            id: `${article.id}-${comment.id}`, // Create a unique ID
-            articleTitle: article.title,
-            articleSlug: article.slug,
-            status: Math.random() > 0.5 ? 'Approved' : 'Pending'
-        }))
+        article.comments.map(comment => {
+            // Use a deterministic way to assign status to avoid hydration errors
+            const status = (parseInt(comment.id, 10) % 2 === 0) ? 'Approved' : 'Pending';
+            return {
+                ...comment,
+                id: `${article.id}-${comment.id}`, // Create a unique ID
+                articleTitle: article.title,
+                articleSlug: article.slug,
+                status: status,
+            }
+        })
     ).sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
 
