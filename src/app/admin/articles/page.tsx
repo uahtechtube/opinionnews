@@ -19,6 +19,7 @@ import { Button } from '@/components/ui/button';
 import { articles } from '@/lib/data';
 import { MoreHorizontal, PlusCircle } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 import {
     DropdownMenu,
     DropdownMenuContent,
@@ -65,7 +66,7 @@ export default function AdminArticlesPage() {
               <TableRow key={article.id}>
                  <TableCell className="hidden sm:table-cell">
                   <Link href={`/article/${article.slug}`}>
-                    <img
+                    <Image
                         alt={article.title}
                         className="aspect-square rounded-md object-cover"
                         height="64"
