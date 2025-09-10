@@ -32,7 +32,10 @@ import {
 } from '@/components/ui/dropdown-menu';
 
 export default function AdminCommentsPage() {
-    const allComments = articles.flatMap(article => 
+    // Sort articles first to ensure a stable order
+    const sortedArticles = [...articles].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+
+    const allComments = sortedArticles.flatMap(article => 
         article.comments.map(comment => {
             // Use a deterministic way to assign status to avoid hydration errors
             const status = (parseInt(comment.id, 10) % 2 === 0) ? 'Approved' : 'Pending';
@@ -44,15 +47,7 @@ export default function AdminCommentsPage() {
                 status: status,
             }
         })
-    ).sort((a, b) => {
-        const dateA = new Date(b.date).getTime();
-        const dateB = new Date(a.date).getTime();
-        if (dateA !== dateB) {
-            return dateA - dateB;
-        }
-        // Add a secondary sort key to ensure stable sorting for items with the same timestamp
-        return a.id.localeCompare(b.id);
-    });
+    );
 
 
   return (
