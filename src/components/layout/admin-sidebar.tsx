@@ -12,7 +12,6 @@ import {
   SidebarMenuButton,
   SidebarGroup,
   SidebarGroupLabel,
-  SidebarTrigger,
 } from '@/components/ui/sidebar';
 import {
   LayoutDashboard,
@@ -29,7 +28,9 @@ import {
   LogOut,
 } from 'lucide-react';
 import { Logo } from '../icons/logo';
-import { SheetHeader, SheetTitle } from '../ui/sheet';
+import { Sheet, SheetContent, SheetHeader, SheetTitle } from '../ui/sheet';
+import { useSidebar } from '../ui/sidebar';
+
 
 const mainLinks = [
   { href: '/admin', label: 'Dashboard', icon: LayoutDashboard },
@@ -56,6 +57,8 @@ const settingsLinks = [
 
 export default function AdminSidebar() {
   const pathname = usePathname();
+  const { openMobile, setOpenMobile } = useSidebar();
+
 
   const renderLink = (link: { href: string; label: string; icon: React.ElementType }) => (
     <SidebarMenuItem key={link.href}>
@@ -77,6 +80,39 @@ export default function AdminSidebar() {
       </SidebarMenuButton>
     </SidebarMenuItem>
   );
+
+  const mobileLinks = (
+      <div className="flex h-full flex-col">
+          <div className="flex-1 p-2">
+          <SidebarGroup>
+              <SidebarGroupLabel>Main</SidebarGroupLabel>
+              <SidebarMenu>{mainLinks.map(renderLink)}</SidebarMenu>
+          </SidebarGroup>
+          <SidebarGroup>
+              <SidebarGroupLabel>Content</SidebarGroupLabel>
+              <SidebarMenu>{contentLinks.map(renderLink)}</SidebarMenu>
+          </SidebarGroup>
+          <SidebarGroup>
+              <SidebarGroupLabel>Users</SidebarGroupLabel>
+              <SidebarMenu>{usersLinks.map(renderLink)}</SidebarMenu>
+          </SidebarGroup>
+          </div>
+          <div className="p-2">
+          <SidebarGroup>
+              <SidebarMenu>
+              {settingsLinks.map(renderLink)}
+              <SidebarMenuItem>
+                  <SidebarMenuButton>
+                  <LogOut className="h-4 w-4" />
+                  Logout
+                  </SidebarMenuButton>
+              </SidebarMenuItem>
+              </SidebarMenu>
+          </SidebarGroup>
+          </div>
+      </div>
+  )
+
 
   return (
     <>
@@ -122,42 +158,14 @@ export default function AdminSidebar() {
           </div>
         </SidebarContent>
       </Sidebar>
-      <Sidebar collapsible="offcanvas" className="sm:hidden">
-        <SidebarContent>
+      <Sheet open={openMobile} onOpenChange={setOpenMobile}>
+        <SheetContent side="left" className="sm:hidden w-[300px] p-0 flex flex-col">
             <SheetHeader className="border-b p-4">
                 <SheetTitle>Admin Menu</SheetTitle>
             </SheetHeader>
-            <div className="flex h-full flex-col">
-                <div className="flex-1 p-2">
-                <SidebarGroup>
-                    <SidebarGroupLabel>Main</SidebarGroupLabel>
-                    <SidebarMenu>{mainLinks.map(renderLink)}</SidebarMenu>
-                </SidebarGroup>
-                <SidebarGroup>
-                    <SidebarGroupLabel>Content</SidebarGroupLabel>
-                    <SidebarMenu>{contentLinks.map(renderLink)}</SidebarMenu>
-                </SidebarGroup>
-                <SidebarGroup>
-                    <SidebarGroupLabel>Users</SidebarGroupLabel>
-                    <SidebarMenu>{usersLinks.map(renderLink)}</SidebarMenu>
-                </SidebarGroup>
-                </div>
-                <div className="p-2">
-                <SidebarGroup>
-                    <SidebarMenu>
-                    {settingsLinks.map(renderLink)}
-                    <SidebarMenuItem>
-                        <SidebarMenuButton>
-                        <LogOut className="h-4 w-4" />
-                        Logout
-                        </SidebarMenuButton>
-                    </SidebarMenuItem>
-                    </SidebarMenu>
-                </SidebarGroup>
-                </div>
-            </div>
-        </SidebarContent>
-      </Sidebar>
+            {mobileLinks}
+        </SheetContent>
+      </Sheet>
     </>
   );
 }
