@@ -31,6 +31,7 @@ import { categories } from '@/lib/data';
 import { cn } from '@/lib/utils';
 import type { Category } from '@/lib/types';
 import { ScrollArea } from '../ui/scroll-area';
+import { Logo } from '../icons/logo';
 
 const iconMap: Record<string, React.ElementType> = {
   news: Newspaper,
@@ -86,8 +87,8 @@ export default function Header() {
       <div className="container mx-auto flex h-auto max-w-7xl flex-col items-center justify-between px-4 py-3 md:px-6">
         <div className="flex w-full items-center justify-between">
             <Link href="/" className="mr-6 flex items-center gap-2">
-              <Newspaper className="h-6 w-6 text-primary" />
-              <span className="hidden font-bold sm:inline-block font-headline">
+              <Logo className="h-8 w-8 text-primary" />
+              <span className="hidden font-bold sm:inline-block font-headline text-xl">
                 Opinion News
               </span>
             </Link>
@@ -107,7 +108,7 @@ export default function Header() {
                 </SheetTrigger>
                 <SheetContent side="right" className="w-[300px] sm:w-[340px] flex flex-col p-0">
                   <SheetHeader className="p-4 border-b">
-                    <SheetTitle className="text-lg font-semibold">Menu</SheetTitle>
+                    <SheetTitle>Menu</SheetTitle>
                   </SheetHeader>
                   <div className="p-4 flex flex-col h-full flex-1">
                     <div className="relative mb-6">

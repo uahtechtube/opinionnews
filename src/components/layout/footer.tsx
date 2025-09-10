@@ -1,12 +1,12 @@
 import Link from 'next/link';
-import { Newspaper } from 'lucide-react';
+import { Logo } from '../icons/logo';
 
 export default function Footer() {
   return (
     <footer className="bg-card border-t">
       <div className="container mx-auto flex flex-col items-center justify-between gap-4 px-4 py-8 md:flex-row md:px-6 max-w-7xl">
         <div className="flex items-center gap-2">
-          <Newspaper className="h-6 w-6 text-primary" />
+          <Logo className="h-6 w-6 text-primary" />
           <p className="text-lg font-semibold font-headline">Opinion News</p>
         </div>
         <div className="text-center order-last md:order-none flex flex-col items-center gap-2">

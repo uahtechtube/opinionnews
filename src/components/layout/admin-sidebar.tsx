@@ -18,7 +18,7 @@ import {
   MessageSquare,
   Settings,
 } from 'lucide-react';
-import { Newspaper as LogoIcon } from 'lucide-react';
+import { Logo } from '../icons/logo';
 
 const links = [
   { href: '/admin', label: 'Dashboard', icon: LayoutDashboard },
@@ -35,7 +35,7 @@ export default function AdminSidebar() {
     <Sidebar collapsible="icon">
       <SidebarHeader>
         <div className="flex items-center gap-2">
-          <LogoIcon className="h-6 w-6 text-primary" />
+          <Logo className="h-6 w-6 text-primary" />
           <span className="text-lg font-semibold">Admin Panel</span>
           <SidebarTrigger className="ml-auto" />
         </div>
