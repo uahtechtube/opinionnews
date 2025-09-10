@@ -2,6 +2,8 @@ import Link from 'next/link';
 import { Logo } from '../icons/logo';
 import { Button } from '../ui/button';
 import { Twitter, Facebook, Linkedin } from 'lucide-react';
+import { WhatsAppIcon } from '../icons/whatsapp-icon';
+import { TikTokIcon } from '../icons/tiktok-icon';
 
 export default function Footer() {
   return (
@@ -42,6 +44,18 @@ export default function Footer() {
                 <Link href="#">
                     <Linkedin className="h-5 w-5" />
                     <span className="sr-only">LinkedIn</span>
+                </Link>
+            </Button>
+            <Button variant="ghost" size="icon" asChild>
+                <Link href="#">
+                    <WhatsAppIcon className="h-5 w-5" />
+                    <span className="sr-only">WhatsApp</span>
+                </Link>
+            </Button>
+            <Button variant="ghost" size="icon" asChild>
+                <Link href="#">
+                    <TikTokIcon className="h-5 w-5" />
+                    <span className="sr-only">TikTok</span>
                 </Link>
             </Button>
         </div>
