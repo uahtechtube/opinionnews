@@ -28,7 +28,6 @@ import {
   ShieldCheck,
 } from 'lucide-react';
 import { Logo } from '../icons/logo';
-import { ThemeToggle } from '../theme-toggle';
 
 const mainLinks = [
   { href: '/admin', label: 'Dashboard', icon: LayoutDashboard },
@@ -83,7 +82,6 @@ export default function AdminSidebar() {
             <span className="text-sm text-muted-foreground leading-tight">Admin Panel</span>
           </div>
           <div className="ml-auto flex items-center gap-2">
-            <ThemeToggle />
             <SidebarTrigger />
           </div>
         </div>

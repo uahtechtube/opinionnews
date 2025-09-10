@@ -1,3 +1,4 @@
+
 import {
   Card,
   CardContent,
@@ -29,6 +30,7 @@ import {
 } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { ThemeToggle } from '@/components/theme-toggle';
 
 export default function AdminDashboardPage() {
   const totalArticles = articles.length;
@@ -49,16 +51,19 @@ export default function AdminDashboardPage() {
 
   return (
     <div className="space-y-8">
-        <div className="flex items-center justify-between">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
             <div>
                 <h1 className="text-3xl font-bold">Dashboard</h1>
                 <p className="text-muted-foreground">Welcome back to your admin panel</p>
             </div>
-            <Button asChild>
-                <Link href="/admin/articles/new">
-                    <Plus className="mr-2 h-4 w-4" /> New Article
-                </Link>
-            </Button>
+            <div className="flex items-center gap-2">
+                <Button asChild>
+                    <Link href="/admin/articles/new">
+                        <Plus className="mr-2 h-4 w-4" /> New Article
+                    </Link>
+                </Button>
+                <ThemeToggle />
+            </div>
         </div>
 
       {/* Stat Cards */}
@@ -165,7 +170,7 @@ export default function AdminDashboardPage() {
                                 </div>
                             </div>
                         </TableCell>
-                        <TableCell className="text-right text-muted-foreground">
+                        <TableCell className="text-right text-muted-foreground hidden sm:table-cell">
                             {new Date(article.date).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}
                         </TableCell>
                     </TableRow>
