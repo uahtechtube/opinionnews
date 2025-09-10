@@ -128,15 +128,6 @@ export default function AdminSidebar() {
                 <SheetTitle>Admin Menu</SheetTitle>
             </SheetHeader>
             <div className="flex h-full flex-col">
-                 <SidebarHeader>
-                    <div className="flex items-center gap-2">
-                        <Logo className="h-8 w-8 text-primary" />
-                        <div className="flex flex-col">
-                        <span className="text-lg font-semibold leading-tight">Opinion News</span>
-                        <span className="text-sm text-muted-foreground leading-tight">Admin</span>
-                        </div>
-                    </div>
-                </SidebarHeader>
                 <div className="flex-1 p-2">
                 <SidebarGroup>
                     <SidebarGroupLabel>Main</SidebarGroupLabel>
