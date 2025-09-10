@@ -13,6 +13,7 @@ import {
   SidebarTrigger,
   SidebarGroup,
   SidebarGroupLabel,
+  SidebarFooter,
 } from '@/components/ui/sidebar';
 import {
   LayoutDashboard,
@@ -26,8 +27,10 @@ import {
   BarChart,
   UserPlus,
   ShieldCheck,
+  LogOut,
 } from 'lucide-react';
 import { Logo } from '../icons/logo';
+import { Button } from '../ui/button';
 
 const mainLinks = [
   { href: '/admin', label: 'Dashboard', icon: LayoutDashboard },
@@ -47,6 +50,10 @@ const usersLinks = [
     { href: '/admin/users/new', label: 'Create User', icon: UserPlus },
     { href: '/admin/user-roles', label: 'User Roles', icon: ShieldCheck },
 ];
+
+const settingsLinks = [
+    { href: '/admin/settings', label: 'Settings', icon: Settings },
+]
 
 export default function AdminSidebar() {
   const pathname = usePathname();
@@ -82,23 +89,40 @@ export default function AdminSidebar() {
             <span className="text-sm text-muted-foreground leading-tight">Admin Panel</span>
           </div>
           <div className="ml-auto flex items-center gap-2">
-            <SidebarTrigger />
+            <SidebarTrigger className="md:hidden" />
           </div>
         </div>
       </SidebarHeader>
-      <SidebarContent>
-        <SidebarGroup>
-            <SidebarGroupLabel>Main</SidebarGroupLabel>
-            <SidebarMenu>{mainLinks.map(renderLink)}</SidebarMenu>
-        </SidebarGroup>
-        <SidebarGroup>
-            <SidebarGroupLabel>Content</SidebarGroupLabel>
-            <SidebarMenu>{contentLinks.map(renderLink)}</SidebarMenu>
-        </SidebarGroup>
-        <SidebarGroup>
-            <SidebarGroupLabel>Users</SidebarGroupLabel>
-            <SidebarMenu>{usersLinks.map(renderLink)}</SidebarMenu>
-        </SidebarGroup>
+      <SidebarContent className="p-0">
+        <div className="flex flex-col h-full">
+            <div className="flex-1 p-2">
+                <SidebarGroup>
+                    <SidebarGroupLabel>Main</SidebarGroupLabel>
+                    <SidebarMenu>{mainLinks.map(renderLink)}</SidebarMenu>
+                </SidebarGroup>
+                <SidebarGroup>
+                    <SidebarGroupLabel>Content</SidebarGroupLabel>
+                    <SidebarMenu>{contentLinks.map(renderLink)}</SidebarMenu>
+                </SidebarGroup>
+                <SidebarGroup>
+                    <SidebarGroupLabel>Users</SidebarGroupLabel>
+                    <SidebarMenu>{usersLinks.map(renderLink)}</SidebarMenu>
+                </SidebarGroup>
+            </div>
+            <div className="p-2">
+                <SidebarGroup>
+                    <SidebarMenu>
+                        {settingsLinks.map(renderLink)}
+                        <SidebarMenuItem>
+                            <SidebarMenuButton>
+                                <LogOut className="h-5 w-5" />
+                                <span>Logout</span>
+                            </SidebarMenuButton>
+                        </SidebarMenuItem>
+                    </SidebarMenu>
+                </SidebarGroup>
+            </div>
+        </div>
       </SidebarContent>
     </Sidebar>
   );
