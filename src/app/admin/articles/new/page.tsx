@@ -98,6 +98,28 @@ export default function AdminCreateArticlePage() {
                     </div>
                 </CardContent>
             </Card>
+             <Card>
+                <CardHeader>
+                    <CardTitle>SEO Management</CardTitle>
+                    <CardDescription>
+                        Optimize this article for search engines.
+                    </CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                    <div className="space-y-2">
+                        <Label htmlFor="seo-title">SEO Title</Label>
+                        <Input id="seo-title" placeholder="Enter meta title" />
+                    </div>
+                    <div className="space-y-2">
+                        <Label htmlFor="seo-description">SEO Description</Label>
+                        <Textarea id="seo-description" rows={3} placeholder="Enter meta description" />
+                    </div>
+                    <div className="space-y-2">
+                        <Label htmlFor="focus-keyword">Focus Keyword</Label>
+                        <Input id="focus-keyword" placeholder="Enter focus keyword" />
+                    </div>
+                </CardContent>
+            </Card>
             <Card>
                  <CardHeader>
                     <CardTitle>Featured Image</CardTitle>
