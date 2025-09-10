@@ -116,7 +116,7 @@ export const SidebarContent = () => (
 
 export default function AdminSidebar() {
   return (
-    <div className="hidden border-r bg-muted/40 md:block">
+    <div className="hidden border-r bg-muted/40 md:block sticky top-0 h-screen">
         <SidebarContent />
     </div>
   );
