@@ -10,6 +10,8 @@ import {
   SidebarMenuItem,
   SidebarMenuButton,
   SidebarTrigger,
+  SidebarGroup,
+  SidebarGroupLabel,
 } from '@/components/ui/sidebar';
 import {
   LayoutDashboard,
@@ -17,52 +19,83 @@ import {
   Users,
   MessageSquare,
   Settings,
+  PlusCircle,
+  Library,
+  Tag,
+  BarChart,
+  UserPlus,
+  ShieldCheck,
 } from 'lucide-react';
 import { Logo } from '../icons/logo';
 
-const links = [
+const mainLinks = [
   { href: '/admin', label: 'Dashboard', icon: LayoutDashboard },
-  { href: '/admin/articles', label: 'Articles', icon: Newspaper },
-  { href: '/admin/comments', label: 'Comments', icon: MessageSquare },
-  { href: '/admin/users', label: 'Users', icon: Users },
-  { href: '/admin/settings', label: 'Settings', icon: Settings },
+  { href: '/admin/analytics', label: 'Analytics', icon: BarChart },
+];
+
+const contentLinks = [
+    { href: '/admin/articles', label: 'All Posts', icon: Newspaper },
+    { href: '/admin/articles/new', label: 'New Post', icon: PlusCircle },
+    { href: '/admin/categories', label: 'Categories', icon: Tag },
+    { href: '/admin/media', label: 'Media Library', icon: Library },
+    { href: '/admin/comments', label: 'Comments', icon: MessageSquare },
+]
+
+const usersLinks = [
+    { href: '/admin/users', label: 'All Users', icon: Users },
+    { href: '/admin/users/new', label: 'Create User', icon: UserPlus },
+    { href: '/admin/user-roles', label: 'User Roles', icon: ShieldCheck },
 ];
 
 export default function AdminSidebar() {
   const pathname = usePathname();
 
+  const renderLink = (link: { href: string; label: string; icon: React.ElementType }) => (
+    <SidebarMenuItem key={link.href}>
+      <SidebarMenuButton
+        asChild
+        isActive={
+          link.href === '/admin'
+            ? pathname === link.href
+            : pathname.startsWith(link.href)
+        }
+        tooltip={{
+          children: link.label,
+        }}
+      >
+        <Link href={link.href}>
+          <link.icon className="h-5 w-5" />
+          <span>{link.label}</span>
+        </Link>
+      </SidebarMenuButton>
+    </SidebarMenuItem>
+  );
+
   return (
     <Sidebar collapsible="icon">
       <SidebarHeader>
         <div className="flex items-center gap-2">
-          <Logo className="h-6 w-6 text-primary" />
-          <span className="text-lg font-semibold">Admin Panel</span>
+          <Logo className="h-8 w-8 text-primary" />
+          <div className="flex flex-col">
+            <span className="text-lg font-semibold leading-tight">Opinion News</span>
+            <span className="text-sm text-muted-foreground leading-tight">Admin Panel</span>
+          </div>
           <SidebarTrigger className="ml-auto" />
         </div>
       </SidebarHeader>
       <SidebarContent>
-        <SidebarMenu>
-          {links.map((link) => (
-            <SidebarMenuItem key={link.href}>
-              <SidebarMenuButton
-                asChild
-                isActive={
-                  link.href === '/admin'
-                    ? pathname === link.href
-                    : pathname.startsWith(link.href)
-                }
-                tooltip={{
-                  children: link.label,
-                }}
-              >
-                <Link href={link.href}>
-                  <link.icon className="h-5 w-5" />
-                  <span>{link.label}</span>
-                </Link>
-              </SidebarMenuButton>
-            </SidebarMenuItem>
-          ))}
-        </SidebarMenu>
+        <SidebarGroup>
+            <SidebarGroupLabel>Main</SidebarGroupLabel>
+            <SidebarMenu>{mainLinks.map(renderLink)}</SidebarMenu>
+        </SidebarGroup>
+        <SidebarGroup>
+            <SidebarGroupLabel>Content</SidebarGroupLabel>
+            <SidebarMenu>{contentLinks.map(renderLink)}</SidebarMenu>
+        </SidebarGroup>
+        <SidebarGroup>
+            <SidebarGroupLabel>Users</SidebarGroupLabel>
+            <SidebarMenu>{usersLinks.map(renderLink)}</SidebarMenu>
+        </SidebarGroup>
       </SidebarContent>
     </Sidebar>
   );
