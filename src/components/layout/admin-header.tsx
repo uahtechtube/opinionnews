@@ -85,48 +85,48 @@ export default function AdminHeader() {
   return (
     <header className="sticky top-0 z-30 flex h-14 items-center gap-4 border-b bg-background px-4 sm:static sm:h-auto sm:border-0 sm:bg-transparent sm:px-6">
       <Sidebar collapsible="offcanvas" className="sm:hidden">
-         <SheetHeader className="border-b p-4">
-            <SheetTitle>Admin Menu</SheetTitle>
-        </SheetHeader>
-        <SidebarHeader>
-          <div className="flex items-center gap-2">
-            <Logo className="h-8 w-8 text-primary" />
-            <div className="flex flex-col">
-              <span className="text-lg font-semibold leading-tight">Opinion News</span>
-              <span className="text-sm text-muted-foreground leading-tight">Admin</span>
+        <SidebarContent>
+            <SheetHeader className="border-b p-4">
+                <SheetTitle>Admin Menu</SheetTitle>
+            </SheetHeader>
+            <div className="flex h-full flex-col">
+                 <SidebarHeader>
+                    <div className="flex items-center gap-2">
+                        <Logo className="h-8 w-8 text-primary" />
+                        <div className="flex flex-col">
+                        <span className="text-lg font-semibold leading-tight">Opinion News</span>
+                        <span className="text-sm text-muted-foreground leading-tight">Admin</span>
+                        </div>
+                    </div>
+                </SidebarHeader>
+                <div className="flex-1 p-2">
+                <SidebarGroup>
+                    <SidebarGroupLabel>Main</SidebarGroupLabel>
+                    <SidebarMenu>{mainLinks.map(renderLink)}</SidebarMenu>
+                </SidebarGroup>
+                <SidebarGroup>
+                    <SidebarGroupLabel>Content</SidebarGroupLabel>
+                    <SidebarMenu>{contentLinks.map(renderLink)}</SidebarMenu>
+                </SidebarGroup>
+                <SidebarGroup>
+                    <SidebarGroupLabel>Users</SidebarGroupLabel>
+                    <SidebarMenu>{usersLinks.map(renderLink)}</SidebarMenu>
+                </SidebarGroup>
+                </div>
+                <div className="p-2">
+                <SidebarGroup>
+                    <SidebarMenu>
+                    {settingsLinks.map(renderLink)}
+                    <SidebarMenuItem>
+                        <SidebarMenuButton>
+                        <LogOut className="h-4 w-4" />
+                        Logout
+                        </SidebarMenuButton>
+                    </SidebarMenuItem>
+                    </SidebarMenu>
+                </SidebarGroup>
+                </div>
             </div>
-          </div>
-        </SidebarHeader>
-        <SidebarContent className="p-0">
-          <div className="flex h-full flex-col">
-            <div className="flex-1 p-2">
-              <SidebarGroup>
-                <SidebarGroupLabel>Main</SidebarGroupLabel>
-                <SidebarMenu>{mainLinks.map(renderLink)}</SidebarMenu>
-              </SidebarGroup>
-              <SidebarGroup>
-                <SidebarGroupLabel>Content</SidebarGroupLabel>
-                <SidebarMenu>{contentLinks.map(renderLink)}</SidebarMenu>
-              </SidebarGroup>
-              <SidebarGroup>
-                <SidebarGroupLabel>Users</SidebarGroupLabel>
-                <SidebarMenu>{usersLinks.map(renderLink)}</SidebarMenu>
-              </SidebarGroup>
-            </div>
-            <div className="p-2">
-              <SidebarGroup>
-                <SidebarMenu>
-                  {settingsLinks.map(renderLink)}
-                  <SidebarMenuItem>
-                    <SidebarMenuButton>
-                      <LogOut className="h-4 w-4" />
-                      Logout
-                    </SidebarMenuButton>
-                  </SidebarMenuItem>
-                </SidebarMenu>
-              </SidebarGroup>
-            </div>
-          </div>
         </SidebarContent>
       </Sidebar>
       <SidebarTrigger className="sm:hidden" />
