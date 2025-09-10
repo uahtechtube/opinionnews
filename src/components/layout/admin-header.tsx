@@ -1,3 +1,4 @@
+
 "use client";
 
 import Link from 'next/link';
@@ -85,7 +86,7 @@ export default function AdminHeader() {
     <header className="sticky top-0 z-30 flex h-14 items-center gap-4 border-b bg-background px-4 sm:static sm:h-auto sm:border-0 sm:bg-transparent sm:px-6">
       <Sidebar collapsible="offcanvas" className="sm:hidden">
          <SheetHeader className="border-b p-4">
-            <SheetTitle className="sr-only">Admin Menu</SheetTitle>
+            <SheetTitle>Admin Menu</SheetTitle>
         </SheetHeader>
         <SidebarHeader>
           <div className="flex items-center gap-2">
