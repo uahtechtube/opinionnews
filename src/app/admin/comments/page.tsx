@@ -44,7 +44,15 @@ export default function AdminCommentsPage() {
                 status: status,
             }
         })
-    ).sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+    ).sort((a, b) => {
+        const dateA = new Date(b.date).getTime();
+        const dateB = new Date(a.date).getTime();
+        if (dateA !== dateB) {
+            return dateA - dateB;
+        }
+        // Add a secondary sort key to ensure stable sorting for items with the same timestamp
+        return a.id.localeCompare(b.id);
+    });
 
 
   return (
