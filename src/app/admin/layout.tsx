@@ -1,3 +1,4 @@
+import AdminHeader from '@/components/layout/admin-header';
 import AdminSidebar from '@/components/layout/admin-sidebar';
 import { SidebarProvider } from '@/components/ui/sidebar';
 
@@ -8,11 +9,14 @@ export default function AdminLayout({
 }) {
   return (
     <SidebarProvider>
-      <div className="flex min-h-screen">
+      <div className="flex min-h-screen w-full flex-col">
         <AdminSidebar />
-        <main className="flex-1 bg-muted/40 p-4 md:p-6 lg:p-8">
-          {children}
-        </main>
+        <div className="flex flex-col sm:gap-4 sm:py-4 sm:pl-14">
+          <AdminHeader />
+          <main className="flex-1 gap-4 bg-muted/40 p-4 sm:px-6 sm:py-0 md:gap-8">
+            {children}
+          </main>
+        </div>
       </div>
     </SidebarProvider>
   );

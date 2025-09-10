@@ -9,10 +9,8 @@ import {
   SidebarMenu,
   SidebarMenuItem,
   SidebarMenuButton,
-  SidebarTrigger,
   SidebarGroup,
   SidebarGroupLabel,
-  SidebarFooter,
 } from '@/components/ui/sidebar';
 import {
   LayoutDashboard,
@@ -29,7 +27,6 @@ import {
   LogOut,
 } from 'lucide-react';
 import { Logo } from '../icons/logo';
-import { Button } from '../ui/button';
 
 const mainLinks = [
   { href: '/admin', label: 'Dashboard', icon: LayoutDashboard },
@@ -79,16 +76,13 @@ export default function AdminSidebar() {
   );
 
   return (
-    <Sidebar collapsible="icon">
+    <Sidebar collapsible="icon" className="hidden sm:flex">
       <SidebarHeader>
         <div className="flex items-center gap-2">
           <Logo className="h-8 w-8 text-primary" />
           <div className="flex flex-col">
             <span className="text-lg font-semibold leading-tight">Opinion News</span>
             <span className="text-sm text-muted-foreground leading-tight">Admin Panel</span>
-          </div>
-          <div className="ml-auto flex items-center gap-2">
-            <SidebarTrigger />
           </div>
         </div>
       </SidebarHeader>
