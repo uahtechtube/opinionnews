@@ -1,3 +1,4 @@
+
 'use client';
 
 import Link from 'next/link';
@@ -200,7 +201,7 @@ export default function AdminDashboardPage() {
                         { label: 'Comments', icon: MessageSquare, href: '/admin/comments' },
                         { label: 'Settings', icon: Settings, href: '/admin/settings' },
                     ].map(action => (
-                         <Button key={action.label} variant="outline" className="flex flex-col h-24 gap-2" asChild>
+                         <Button key={action.href} variant="outline" className="flex flex-col h-24 gap-2" asChild>
                             <Link href={action.href}>
                                 <action.icon className="h-6 w-6" />
                                 <span>{action.label}</span>
