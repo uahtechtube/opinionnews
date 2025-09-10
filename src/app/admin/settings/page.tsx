@@ -51,10 +51,6 @@ export default function AdminSettingsPage() {
                 <Label htmlFor="admin-email">Administration Email Address</Label>
                 <Input id="admin-email" type="email" defaultValue="admin@opinionnews.com" />
               </div>
-               <div className="flex items-center space-x-2">
-                <Switch id="membership" />
-                <Label htmlFor="membership">Anyone can register</Label>
-              </div>
             </CardContent>
           </Card>
         </TabsContent>
