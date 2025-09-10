@@ -12,6 +12,7 @@ import {
   SidebarMenuButton,
   SidebarGroup,
   SidebarGroupLabel,
+  useSidebar,
 } from '@/components/ui/sidebar';
 import {
   LayoutDashboard,
@@ -29,8 +30,6 @@ import {
 } from 'lucide-react';
 import { Logo } from '../icons/logo';
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from '../ui/sheet';
-import { useSidebar } from '../ui/sidebar';
-
 
 const mainLinks = [
   { href: '/admin', label: 'Dashboard', icon: LayoutDashboard },
