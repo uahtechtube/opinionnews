@@ -17,12 +17,12 @@ import {
 } from '../ui/dropdown-menu';
 import Image from 'next/image';
 import { ThemeToggle } from '../theme-toggle';
-import MobileSidebar from './mobile-sidebar';
+import { MobileAdminSidebar } from './admin-sidebar';
 
 export default function AdminHeader() {
   return (
     <header className="flex h-14 items-center gap-4 border-b bg-background px-4 lg:h-[60px] lg:px-6">
-      <MobileSidebar />
+      <MobileAdminSidebar />
 
       <div className="w-full flex-1">
         <form>

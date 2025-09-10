@@ -20,7 +20,10 @@ import {
 } from 'lucide-react';
 import { Logo } from '../icons/logo';
 import { cn } from '@/lib/utils';
-
+import { Sheet, SheetContent, SheetTrigger } from '../ui/sheet';
+import { Button } from '../ui/button';
+import { Menu } from 'lucide-react';
+import { ScrollArea } from '../ui/scroll-area';
 
 const mainLinks = [
   { href: '/admin', label: 'Dashboard', icon: LayoutDashboard },
@@ -75,8 +78,8 @@ export const SidebarContent = () => (
                 <span className="">Opinion News</span>
             </Link>
         </div>
-        <div className="flex-1">
-            <nav className="grid items-start px-2 text-sm font-medium lg:px-4">
+        <ScrollArea className="flex-1">
+            <nav className="grid items-start px-2 py-4 text-sm font-medium lg:px-4">
                 <h3 className="my-2 px-3 text-xs font-semibold text-muted-foreground uppercase">Main</h3>
                 {mainLinks.map((link) => (
                     <SidebarLink key={link.href} link={link} />
@@ -92,8 +95,8 @@ export const SidebarContent = () => (
                     <SidebarLink key={link.href} link={link} />
                 ))}
             </nav>
-        </div>
-        <div className="mt-auto p-4">
+        </ScrollArea>
+        <div className="mt-auto p-4 border-t">
              <nav className="grid items-start px-2 text-sm font-medium lg:px-4">
                 {settingsLinks.map((link) => (
                     <SidebarLink key={link.href} link={link} />
@@ -117,4 +120,24 @@ export default function AdminSidebar() {
         <SidebarContent />
     </div>
   );
+}
+
+export function MobileAdminSidebar() {
+    return (
+        <Sheet>
+            <SheetTrigger asChild>
+                <Button
+                variant="outline"
+                size="icon"
+                className="shrink-0 md:hidden"
+                >
+                <Menu className="h-5 w-5" />
+                <span className="sr-only">Toggle navigation menu</span>
+                </Button>
+            </SheetTrigger>
+            <SheetContent side="left" className="flex flex-col p-0">
+                <SidebarContent />
+            </SheetContent>
+        </Sheet>
+    )
 }
