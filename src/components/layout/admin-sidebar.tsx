@@ -1,3 +1,4 @@
+
 "use client";
 
 import Link from 'next/link';
@@ -27,6 +28,7 @@ import {
   ShieldCheck,
 } from 'lucide-react';
 import { Logo } from '../icons/logo';
+import { ThemeToggle } from '../theme-toggle';
 
 const mainLinks = [
   { href: '/admin', label: 'Dashboard', icon: LayoutDashboard },
@@ -80,7 +82,10 @@ export default function AdminSidebar() {
             <span className="text-lg font-semibold leading-tight">Opinion News</span>
             <span className="text-sm text-muted-foreground leading-tight">Admin Panel</span>
           </div>
-          <SidebarTrigger className="ml-auto" />
+          <div className="ml-auto flex items-center gap-2">
+            <ThemeToggle />
+            <SidebarTrigger />
+          </div>
         </div>
       </SidebarHeader>
       <SidebarContent>
